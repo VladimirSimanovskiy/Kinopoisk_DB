@@ -1,6 +1,18 @@
 --
--- drop tables
+-- create database
 --
+
+CREATE DATABASE "Kinopoisk"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Russian_Russia.1251'
+    LC_CTYPE = 'Russian_Russia.1251'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+
 DROP TABLE IF EXISTS film_genre;
 DROP TABLE IF EXISTS film_person;
 DROP TABLE IF EXISTS film_actor;
@@ -142,7 +154,7 @@ CREATE TABLE film_actor (
 
 CREATE TABLE film_dubbing (
   film_id bigint REFERENCES film(film_id),
-  dubbing_id bigint REFERENCES dubbing(dubbing_id),
+     bigint REFERENCES dubbing(dubbing_id),
 
   CONSTRAINT pk_film_dubbing PRIMARY KEY (film_id, dubbing_id),
   CONSTRAINT fk_film_id FOREIGN KEY (film_id) REFERENCES film(film_id),
